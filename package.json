@@ -1,16 +1,13 @@
 {
-  "name": "nextn",
+  "name": "stat-master",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://Sadeghi1Faramarz.github.io/stat-master",
   "scripts": {
     "dev": "next dev --turbopack -p 9002",
-    "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
-    "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-    "build": "NODE_ENV=production next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit",
     "deploy": "npm run build && gh-pages -d out -t -r https://github.com/Sadeghi1Faramarz/stat-master.git"
   },
   "dependencies": {
