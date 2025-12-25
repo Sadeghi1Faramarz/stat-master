@@ -1,0 +1,6 @@
+run: npm run start
+stack: node20
+# Firebase App Hosting ignores node_modules, and installs dependencies from
+# your package.json.
+# See https://firebase.google.com/docs/app-hosting/app-hosting-yaml?hl=en#build-config
+# for more information.

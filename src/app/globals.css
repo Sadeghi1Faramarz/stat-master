@@ -1,0 +1,383 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 229 64% 13%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 98%;
+    --popover: 229 64% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 229 64% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 229 64% 20%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 100%;
+    --input: 229 64% 20%;
+    --ring: 217.2 91.2% 59.8%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 95.9%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 100%;
+    --sidebar-accent-foreground: 0 0% 95.9%;
+    --sidebar-border: 0 0% 100%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+      background-image:
+        linear-gradient(theme(colors.white / 10%) 1px, transparent 1px),
+        linear-gradient(to right, theme(colors.white / 10%) 1px, transparent 1px);
+      background-size: 2rem 2rem;
+  }
+  .bg-gradient-radial {
+      background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-slate-200 to-slate-500 bg-clip-text text-transparent;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  /* Starfield Masked Text */
+  .star-mask-text {
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    background-size: auto;
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: star-scroll 60s linear infinite;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes star-scroll {
+    from { background-position: 0 0; }
+    to { background-position: -1000px 500px; }
+  }
+
+  /* Starfield Background Animation */
+  .stars {
+    background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    z-index: 0;
+  }
+  #stars1 {
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 50px 160px, #ddd, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 160px 120px, #ddd, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: animStar 50s linear infinite;
+  }
+  #stars2 {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: animStar 100s linear infinite;
+  }
+  #stars3 {
+    background-image: 
+      radial-gradient(3px 3px at 20px 30px, #eee, rgba(0,0,0,0)),
+      radial-gradient(3px 3px at 40px 70px, #fff, rgba(0,0,0,0)),
+      radial-gradient(3px 3px at 50px 160px, #ddd, rgba(0,0,0,0)),
+      radial-gradient(3px 3px at 90px 40px, #fff, rgba(0,0,0,0)),
+      radial-gradient(3px 3px at 130px 80px, #fff, rgba(0,0,0,0)),
+      radial-gradient(3px 3px at 160px 120px, #ddd, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: animStar 150s linear infinite;
+  }
+  
+
+  @keyframes animStar {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+  }
+
+
+  .card-prism-borders {
+    @apply rounded-xl;
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .group:hover .card-prism-borders {
+    opacity: 1;
+    animation: rainbow-refraction 2s infinite linear;
+  }
+  
+  @keyframes rainbow-refraction {
+    0% { background: linear-gradient(135deg, #ff00c1, #00fff2, #ffb300); }
+    25% { background: linear-gradient(135deg, #00fff2, #ffb300, #ff00c1); }
+    50% { background: linear-gradient(135deg, #ffb300, #ff00c1, #00fff2); }
+    75% { background: linear-gradient(135deg, #ff00c1, #00fff2, #ffb300); }
+    100% { background: linear-gradient(135deg, #ff00c1, #00fff2, #ffb300); }
+  }
+
+
+  .footer-reflection {
+    @apply absolute -bottom-1/2 left-0 right-0 h-1/2 bg-gradient-to-t from-slate-800/10 to-transparent blur-sm;
+  }
+
+  .warp-container {
+    @apply w-screen h-screen flex items-center justify-center overflow-hidden;
+    perspective: 1000px;
+  }
+
+  .warp-line {
+    @apply absolute w-1 h-[200vh] bg-gradient-to-b from-cyan-400 to-purple-500;
+    transform: rotate(calc(180deg / 30 * var(--i))) translateY(-100px);
+    animation: warp-animate 1s ease-in-out forwards;
+    filter: blur(1px);
+  }
+
+  .glitch-text {
+    position: relative;
+    color: #fff;
+    background: -webkit-gradient(linear, left top, right top, from(#0ff), to(#f0f));
+    background: linear-gradient(90deg, #0ff, #f0f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glitch-text:hover::before,
+  .glitch-text:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0F1535;
+    overflow: hidden;
+  }
+
+  .glitch-text:hover::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  }
+
+  .glitch-text:hover::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff2;
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    opacity: 0.1;
+    animation: scanline-anim 4s linear infinite;
+  }
+
+  .ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker-scroll 40s linear infinite;
+  }
+  
+  .ticker span {
+    display: inline-block;
+  }
+
+  .animate-enter {
+    animation: fade-in-slide-up 0.5s ease-out forwards;
+  }
+  
+  @keyframes fade-in-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .ticker {
+      animation: none;
+      padding-left: 0;
+    }
+  }
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+
+@keyframes scanline-anim {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(45% 0 50% 0); }
+    25% { clip-path: inset(5% 0 80% 0); }
+    50% { clip-path: inset(85% 0 5% 0); }
+    75% { clip-path: inset(60% 0 30% 0); }
+    100% { clip-path: inset(25% 0 65% 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(55% 0 20% 0); }
+    25% { clip-path: inset(90% 0 2% 0); }
+    50% { clip-path: inset(15% 0 70% 0); }
+    75% { clip-path: inset(70% 0 10% 0); }
+    100% { clip-path: inset(40% 0 45% 0); }
+}
+
+
+@keyframes warp-animate {
+  from {
+    transform: rotate(calc(180deg / 30 * var(--i))) translateY(-200px) translateZ(0px);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(calc(180deg / 30 * var(--i))) translateY(-200px) translateZ(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+.animate-float {
+  animation: float linear infinite;
+}
+
+
+@keyframes grid-pan {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-grid-pan {
+  animation: grid-pan var(--grid-pan-duration, 30s) linear infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
