@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+
+import type { Metadata, Viewport } from 'next';
 import { Vazirmatn } from 'next/font/google';
 import { Toaster } from "@/components/ui/toaster";
 import './globals.css';
@@ -21,7 +22,6 @@ export const metadata: Metadata = {
   description: 'ابزار تحلیل آماری، رسم نمودار و یادگیری مفاهیم مهندسی.',
   authors: [{ name: 'Faramarz Sadeghi' }],
   manifest: `${basePath}/manifest.json`,
-  themeColor: '#0F1535',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
@@ -31,6 +31,10 @@ export const metadata: Metadata = {
     icon: `${basePath}/logo.svg`,
     apple: `${basePath}/logo.svg`,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#0F1535',
 };
 
 export default function RootLayout({
